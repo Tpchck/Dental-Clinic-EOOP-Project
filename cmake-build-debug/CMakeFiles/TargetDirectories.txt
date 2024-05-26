@@ -1,0 +1,3 @@
+G:/Politechnicka Warszawska Study/EOOP/Dental-Clinic-EOOP-project/cmake-build-debug/CMakeFiles/Dental_Clinic_EOOP_project.dir
+G:/Politechnicka Warszawska Study/EOOP/Dental-Clinic-EOOP-project/cmake-build-debug/CMakeFiles/edit_cache.dir
+G:/Politechnicka Warszawska Study/EOOP/Dental-Clinic-EOOP-project/cmake-build-debug/CMakeFiles/rebuild_cache.dir

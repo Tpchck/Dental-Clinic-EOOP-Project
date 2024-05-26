@@ -1,0 +1,15 @@
+# ninja log v5
+2	664	7384333994481440	CMakeFiles/Dental_Clinic_EOOP_project.dir/main.cpp.obj	5927ac5886f86bc7
+16	580	7384333993624178	CMakeFiles/Dental_Clinic_EOOP_project.dir/Appointment.cpp.obj	b77094ffb38548ae
+798	981	7384331655349255	Dental_Clinic_EOOP_project.exe	f4fb5a3756292b7b
+9	811	7384330151084718	CMakeFiles/Dental_Clinic_EOOP_project.dir/Patient.cpp.obj	ffa66397dcefbb1d
+1	101	7341954587459138	build.ninja	e9d779c49758e4f9
+17	322	7382707345533918	CMakeFiles/Dental_Clinic_EOOP_project.dir/Dentist.cpp.obj	536aa03af4271594
+12	842	7384333996245776	CMakeFiles/Dental_Clinic_EOOP_project.dir/DentalClinic.cpp.obj	cc9d25ea193fd986
+7	392	7382600753671407	CMakeFiles/Dental_Clinic_EOOP_project.dir/Treatment.cpp.obj	6ae7aa5ee7b8f91c
+24	579	7384333993624178	CMakeFiles/Dental_Clinic_EOOP_project.dir/System.cpp.obj	d320b258656acf85
+20	394	7384333991772838	CMakeFiles/Dental_Clinic_EOOP_project.dir/MedicalRecord.cpp.obj	b48ec4070b949adb
+3	549	7384334572069248	CMakeFiles/Dental_Clinic_EOOP_project.dir/Patient.cpp.obj	ffa66397dcefbb1d
+550	717	7384334573699123	Dental_Clinic_EOOP_project.exe	f4fb5a3756292b7b
+3	518	7384598313997636	CMakeFiles/Dental_Clinic_EOOP_project.dir/Patient.cpp.obj	ffa66397dcefbb1d
+519	708	7384598315861442	Dental_Clinic_EOOP_project.exe	f4fb5a3756292b7b
