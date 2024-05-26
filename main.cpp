@@ -12,6 +12,17 @@ int main() {
 
     DentalClinic clinic;
 
+    // Test Dentist Addition
+    clinic.addDentist("Dr. Smith", "Dentist-Therapist");
+    clinic.addDentist("Dr. Bruno", "Dentist-Surgeon");
+    clinic.addDentist("Dr. Leopold", "Orthodontist");
+
+    // Test Patient Addition
+    clinic.addPatient("John Doe", 30, "123-456-7890");
+    clinic.addPatient("Alex Margo", 24, "510-229-1488");
+    clinic.addPatient("Jane Doe", 30, "1234567890");
+
+    // Test Treatment Addition
     clinic.addTreatment("Teeth Whitening",
                         "Lightens teeth and helps to remove stains and discoloration",
                         250.00, "Dentist-Therapist");
@@ -20,37 +31,39 @@ int main() {
                         500.00, "Dentist-Surgeon");
     clinic.addTreatment("Braces", "Used to straighten teeth and correct bite issues", 3000.00,
                         "Orthodontist");
+    clinic.addTreatment("Root Canal Treatment", "Procedure to repair and save a tooth that is badly decayed or becomes infected.", 200.0, "Orthodontist");
 
-    clinic.addDentist("Dr. Smith", "Dentist-Therapist");
-    clinic.addDentist("Dr. Bruno", "Dentist-Surgeon");
-    clinic.addDentist("Dr. Leopold", "Orthodontist");
+    //Print all Treatments
+    printAllTreatments(clinic.getTreatments());
 
-    clinic.addPatient("John Doe", 30, "123-456-7890");
-    clinic.addPatient("Alex Margo", 24, "510-229-1488");
+    // Test Appointment Booking
+    Appointment* successAppointment1 = clinic.bookAppointment("2024-04-01", "11:00", clinic.findDentist("Dr. Bruno"), clinic.findPatient("Alex Margo"), clinic.findTreatment("Dental Crowns"));
+    cout << "Appointment booked successfully with id: " << successAppointment1->getId() << endl;
+    printAllAppointments(clinic.getAppointments());
 
+    // Test Dentist Availability
+    bool isAvailable = clinic.isDentistAvailable(clinic.findDentist("Dr. Bruno"), "2024-04-01", "12:00");
+    cout << "Is Dr. Bruno available at 2024-04-01 12:00? " << (isAvailable ? "Yes" : "No") << endl;
+
+    // Test Medical Record Addition
     clinic.addPatientMedicalRecord(clinic.findPatient("John Doe")->getId(), {"Cavities", "Filling", "2024-01-10", "Dr Bruno"});
-    clinic.addPatientMedicalRecord(clinic.findPatient("Alex Margo")->getId(), {"Deep caries", "Caries treatment", "2024-02-15", "Dr Smith"});
+    cout << "Medical record added successfully for patient: " << clinic.findPatient("John Doe")->getName() << endl;
 
-    //clinic.findPatient("johndoe")->printMedicalRecord();
-
-    Appointment* successAppointment1 = clinic.bookAppointment("2024-04-01", "11:00", clinic.findDentist("dr.bruno"), clinic.findPatient("Alex Margo"), clinic.findTreatment("Dental Crowns"));
-    //Appointment* successAppointment2 = clinic.bookAppointment("2024-04-01", "12:00", clinic.findDentist("Dr. Bruno"), clinic.findPatient("Alex Margo"), clinic.findTreatment("Dental Crowns"));
-
-    ///Functionality to edit appointment
-    /*    successAppointment->editDate("2024-04-02");
-    successAppointment->editTime("12:00");
-    successAppointment->editDentist(clinic.findDentist("Dr. Smith"));
-    successAppointment->editPatient(clinic.findPatient("John Doe"));
-    successAppointment->setTreatment(clinic.findTreatment("Braces"));*/
-
-    //printAllTreatments(clinic.getTreatments());
-
+    // Test Appointment Deletion
     clinic.deleteAppointment(successAppointment1->getId());
 
-    //Appointment *failedAppointment1 = clinic.bookAppointment("2024-04-01", "11:00", clinic.findDentist("Dr. Leopold"), clinic.findPatient("John Doe"), clinic.findTreatment("Dental Crowns"));
-    //Appointment *failedAppointment2 = clinic.bookAppointment("2024-04-01", "11:00", clinic.findDentist("Dr. Bruno"), clinic.findPatient("John Doe"), clinic.findTreatment("Braces"));
+    // Test Appointment Editing
+    Appointment* failedAppointment = clinic.bookAppointment("2024-04-02", "12:00", clinic.findDentist("Dr. Bruno"), clinic.findPatient("Jane Doe"), clinic.findTreatment("Root Canal Treatment"));
 
+    if (failedAppointment != nullptr) {
+        failedAppointment->editDate("2024-04-03");
+        clinic.deleteAppointment(failedAppointment->getId());
+    } else {
+        cout << "Failed to create new appointment." << endl;
+    }
+
+    // Print all appointments
     printAllAppointments(clinic.getAppointments());
 
     return 0;
-} 
+}

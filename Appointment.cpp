@@ -38,8 +38,17 @@ string Appointment::getTime() const {
     return time;
 }
 
+string Appointment::getDate() const {
+    return date;
+}
+
+int Appointment::getId() const {
+    return id;
+}
+
 void Appointment::editDate(const string &newDate) {
     date = newDate;
+    cout << "Appointment has been changed" << endl;
 }
 
 void Appointment::editTime(const string &newTime) {
@@ -48,12 +57,4 @@ void Appointment::editTime(const string &newTime) {
         return;
     }
     time = newTime;
-}
-
-string Appointment::getDate() const {
-    return date;
-}
-
-int Appointment::getId() const {
-    return id;
 }

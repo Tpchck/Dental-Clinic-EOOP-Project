@@ -4,6 +4,7 @@
 #include "DentalClinic.h"
 #include "Appointment.h"
 #include <stdexcept>
+#include <algorithm>
 
 
 DentalClinic::~DentalClinic() {
@@ -29,8 +30,18 @@ void DentalClinic::addTreatment(const string &name, const string &description, d
 }
 
 Appointment* DentalClinic::bookAppointment(const string &date, const string &time, const Dentist* dentist, const Patient* patient, const Treatment* treatment) {
-    if (!dentist || !patient || !treatment) {
-        cout << "Error: Missing entities for the appointment." << endl;
+    if (!dentist) {
+        cout << "Error: Dentist not found." << endl;
+        return nullptr;
+    }
+
+    if (!patient) {
+        cout << "Error: Patient not found." << endl;
+        return nullptr;
+    }
+
+    if (!treatment) {
+        cout << "Error: Treatment not found." << endl;
         return nullptr;
     }
 
@@ -72,13 +83,21 @@ const Patient* DentalClinic::findPatient(const string &name) const {
 }
 
 string DentalClinic::normalizeName(const string& name) const {
+    if (name.empty()) {
+        cout << "Warning: Name cannot be empty" << endl;
+        return "";
+    }
+
     string normalized;
     normalized.reserve(name.size());
     for (char c : name) {
-        if (c != ' ') {
-            normalized += tolower(c);
+        if (c != ' ' && c != '-' && c != '\'') {
+            normalized += c;
         }
     }
+
+    transform(normalized.begin(), normalized.end(), normalized.begin(), ::tolower);
+
     return normalized;
 }
 
