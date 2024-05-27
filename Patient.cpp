@@ -48,6 +48,7 @@ void Patient::printMedicalRecord() const {
         return;
     }
 
+    cout << "-----------------------------------------------------------" << endl;
     cout << "Medical Record for " << name << ":" << endl;
     for (const MedicalRecord& record : medicalRecords) {
         cout << "Condition: " << record.getCondition() << ", "
@@ -55,4 +56,5 @@ void Patient::printMedicalRecord() const {
              << "Date: " << record.getDate() << ", "
              << "Doctor: " << record.getDoctorName() << endl;
     }
+    cout << "-----------------------------------------------------------" << endl;
 }

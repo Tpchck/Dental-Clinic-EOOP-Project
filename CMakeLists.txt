@@ -21,4 +21,6 @@ add_executable(Dental_Clinic_EOOP_project
         System.h
         MedicalRecord.cpp
         MedicalRecord.h
+        Tests.cpp
+        Tests.h
 )

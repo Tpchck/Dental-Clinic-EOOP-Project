@@ -15,16 +15,28 @@ DentalClinic::~DentalClinic() {
 }
 
 void DentalClinic::addDentist(const string &name, const string &specialization) {
+    if (name.empty()) {
+        cout << "Error: Dentist name cannot be empty." << endl;
+        return;
+    }
     Dentist* dentist = new Dentist(name, specialization);
     dentists.push_back(dentist);
 }
 
 void DentalClinic::addPatient(const string &name, int age, const string &contactInfo) {
+    if (name.empty()) {
+        cout << "Error: Patient name cannot be empty." << endl;
+        return;
+    }
     Patient* patient = new Patient(name, age, contactInfo);
     patients.push_back(patient);
 }
 
 void DentalClinic::addTreatment(const string &name, const string &description, double cost, const string &requiredSpecialization) {
+    if (name.empty()) {
+        cout << "Error: Treatment name cannot be empty." << endl;
+        return;
+    }
     Treatment* treatment = new Treatment(name, description, cost, requiredSpecialization);
     treatments.push_back(treatment);
 }
