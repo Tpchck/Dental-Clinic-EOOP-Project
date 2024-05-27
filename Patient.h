@@ -3,16 +3,16 @@
 //
 #pragma ocne
 
+#ifndef PATIENT_H
+#define PATIENT_H
+
+
 #include <string>
 #include <vector>
 #include "MedicalRecord.h"
 
-#ifndef DENTAL_CLINIC_EOOP_PROJECT_PATIENT_H
-#define DENTAL_CLINIC_EOOP_PROJECT_PATIENT_H
-#endif //DENTAL_CLINIC_EOOP_PROJECT_PATIENT_H
 
-//классы должны быть независимы, дантиста можно добавить к разным клинкам. Пациента аналогично. Передача через поинтеры
-1pm 350a
+
 using namespace std;
 
 class Patient {
@@ -23,20 +23,17 @@ private:
     string phoneNumber;
     vector<MedicalRecord> medicalRecords;
     static int lastId;
-
 public:
     Patient(const string& name, int age, const string& phoneNumber);
-
     int getId() const;
     string getName() const;
+    void setName(const string& name);
     int getAge() const;
+    void setAge(int age);
     string getPhoneNumber() const;
-
-    void setName(const string &newName);
-    void setAge(int newAge);
-    void setPhoneNumber(const string &newPhoneNumber);
-
-    void addMedicalRecord(const MedicalRecord& record);
-
-    void printMedicalRecord() const;
+    void setPhoneNumber(const string& phoneNumber);
+    vector<MedicalRecord> getMedicalRecords() const;
+    void addMedicalRecord(const MedicalRecord& medicalRecord);
 };
+
+#endif // PATIENT_H

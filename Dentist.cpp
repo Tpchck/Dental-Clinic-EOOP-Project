@@ -4,21 +4,28 @@
 
 #include "Dentist.h"
 
-Dentist::Dentist(const string& name, const string& specialization)
-        : name(name), specialization(specialization) {}
+int Dentist::lastId = 0;
+
+Dentist::Dentist(const string& name, const string& specialization) : name(name), specialization(specialization) {
+    id = ++lastId;
+}
 
 string Dentist::getName() const {
     return name;
+}
+
+void Dentist::setName(const string& name) {
+    this->name = name;
 }
 
 string Dentist::getSpecialization() const {
     return specialization;
 }
 
-void Dentist::setName(const string &newName) {
-    name = newName;
+void Dentist::setSpecialization(const string& specialization) {
+    this->specialization = specialization;
 }
 
-void Dentist::setSpecialization(const string &newSpecialization) {
-    specialization = newSpecialization;
+int Dentist::getId() const {
+    return id;
 }

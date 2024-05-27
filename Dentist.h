@@ -2,26 +2,26 @@
 // Created by Tpshck on 3/25/2024.
 //
 #pragma once
+
+#ifndef DENTISTSREGISTRY_H
+#define DENTISTSREGISTRY_H
+#endif // DENTISTSREGISTRY_H
+
 #include <string>
-
-
-#ifndef DENTAL_CLINIC_EOOP_PROJECT_DANTIST_H
-#define DENTAL_CLINIC_EOOP_PROJECT_DANTIST_H
-#endif //DENTAL_CLINIC_EOOP_PROJECT_DANTIST_H
-
 using namespace std;
 
 class Dentist {
 private:
     string name;
     string specialization;
-
+    int id;
+    static int lastId;
 public:
     Dentist(const string& name, const string& specialization);
-
     string getName() const;
+    void setName(const string& name);
     string getSpecialization() const;
-
-    void setName(const string &newName);
-    void setSpecialization(const string &newSpecialization);
+    void setSpecialization(const string& specialization);
+    int getId() const;
 };
+

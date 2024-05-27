@@ -2,13 +2,13 @@
 // Created by Tpshck on 3/25/2024.
 //
 
-#include <iostream>
 #include "Patient.h"
 
-int Patient::lastId = 0;
+Patient::Patient(const string& name, int age, const string& phoneNumber) : name(name), age(age), phoneNumber(phoneNumber) {
+    id = ++lastId;
+}
 
-Patient::Patient(const string& name, int age, const string& phoneNumber)
-        : id(++lastId), name(name), age(age), phoneNumber(phoneNumber) {}
+int Patient::lastId = 0;
 
 int Patient::getId() const {
     return id;
@@ -18,43 +18,30 @@ string Patient::getName() const {
     return name;
 }
 
+void Patient::setName(const string& name) {
+    this->name = name;
+}
+
 int Patient::getAge() const {
     return age;
+}
+
+void Patient::setAge(int age) {
+    this->age = age;
 }
 
 string Patient::getPhoneNumber() const {
     return phoneNumber;
 }
 
-void Patient::setName(const string &newName) {
-    name = newName;
+void Patient::setPhoneNumber(const string& phoneNumber) {
+    this->phoneNumber = phoneNumber;
 }
 
-void Patient::setAge(int newAge) {
-    age = newAge;
+vector<MedicalRecord> Patient::getMedicalRecords() const {
+    return medicalRecords;
 }
 
-void Patient::setPhoneNumber(const string &newPhoneNumber) {
-    phoneNumber = newPhoneNumber;
-}
-
-void Patient::addMedicalRecord(const MedicalRecord& record) {
-    medicalRecords.push_back(record);
-}
-
-void Patient::printMedicalRecord() const {
-    if (medicalRecords.empty()) {
-        cout << "No medical records for " << name << "." << endl;
-        return;
-    }
-
-    cout << "-----------------------------------------------------------" << endl;
-    cout << "Medical Record for " << name << ":" << endl;
-    for (const MedicalRecord& record : medicalRecords) {
-        cout << "Condition: " << record.getCondition() << ", "
-             << "Treatment: " << record.getTreatment() << ", "
-             << "Date: " << record.getDate() << ", "
-             << "Doctor: " << record.getDoctorName() << endl;
-    }
-    cout << "-----------------------------------------------------------" << endl;
+void Patient::addMedicalRecord(const MedicalRecord& medicalRecord) {
+    medicalRecords.push_back(medicalRecord);
 }

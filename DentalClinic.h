@@ -3,46 +3,31 @@
 //
 #pragma once
 
-#include <iostream>
+#ifndef DENTAL_CLINIC_H
+#define DENTAL_CLINIC_H
+#endif //DENTAL_CLINIC_H
+
 #include <vector>
 #include "Dentist.h"
 #include "Treatment.h"
-
-class Patient;
-class Appointment;
-#ifndef DENTAL_CLINIC_EOOP_PROJECT_DENTALCLINIC_H
-#define DENTAL_CLINIC_EOOP_PROJECT_DENTALCLINIC_H
-#endif //DENTAL_CLINIC_EOOP_PROJECT_DENTALCLINIC_H
-
-using namespace std;
-
+#include "Appointment.h"
 
 class DentalClinic {
 private:
-    vector<Dentist *> dentists;
-    vector<Patient *> patients;
-    vector<Treatment *> treatments;
-    vector<Appointment *> appointments;
-
-    string normalizeName(const string& name) const;
-
+    vector<Dentist*> dentists;
+    vector<Patient*> patients;
+    vector<Treatment*> treatments;
+    vector<Appointment*> appointments;
 public:
-    ~DentalClinic();
+    void addDentist(const string& name, const string& specialization);
+    void addPatient(const string& name, int age, const string& phoneNumber);
+    void addTreatment(const string& name, const string& description, double cost, const string& requiredSpecialization);
+    Appointment* bookAppointment(const string& date, const string& time, Dentist* dentist, Patient* patient, Treatment* treatment);
+    Dentist* findDentist(const string& name);
+    Patient* findPatient(const string& name);
+    vector<Dentist*> getDentists() const;
+    vector<Patient*> getPatients() const;
 
-    void deleteAppointment(int appointmentId);
-
-    void addDentist(const string &name, const string &specialization);
-    void addPatient(const string &name, int age, const string &contactInfo);
-    void addTreatment(const string &name, const string &description, double cost, const string &requiredSpecialization);
-
-    Appointment* bookAppointment(const string &date, const string &time, const Dentist* dentist, const Patient* patient, const Treatment* treatment);
-    bool isDentistAvailable(const Dentist* dentist, const string& date, const string& time);
-    void addPatientMedicalRecord(int patientId, const vector<string>& medicalRecordDetails);
-
-    const Dentist* findDentist(const string &name) const;
-    const Patient* findPatient(const string &name) const;
-    const Treatment* findTreatment(const string &name) const;
-
-    const vector<Appointment*>& getAppointments() const;
-    const vector<Treatment*>& getTreatments() const;
+    bool isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const;
+    bool canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const;
 };
