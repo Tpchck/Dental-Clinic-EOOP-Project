@@ -24,6 +24,8 @@ public:
     void testAddMedicalRecord(DentalClinic& clinic);
     void testDeleteAppointment(DentalClinic& clinic);
     void testEditAppointment(DentalClinic& clinic);
+
+
     void testAddDentistWithEmptyName(DentalClinic &clinic);
     void testAddPatientWithEmptyName(DentalClinic &clinic);
     void testAddTreatmentWithEmptyName(DentalClinic &clinic);

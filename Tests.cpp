@@ -38,8 +38,14 @@ void Tests::testBookAppointment(DentalClinic &clinic) {
 }
 
 void Tests::testDentistAvailability(DentalClinic &clinic) {
-    bool isAvailable = clinic.isDentistAvailable(clinic.findDentist("Dr. Bruno"), "2024-04-01", "12:00");
-    cout << "Is Dr. Bruno available at 2024-04-01 12:00? " << (isAvailable ? "Yes" : "No") << endl;
+    bool isAvailable = clinic.isDentistAvailable(clinic.findDentist("Dr. Bruno"), "2024-04-01", "11:00");
+    cout << "Is Dr. Bruno available at 2024-04-01 11:00? ";
+    if(isAvailable){
+    cout << "Yes" << endl;
+    }
+    else {
+        cout << "No" << endl;
+    }
 }
 
 void Tests::testAddMedicalRecord(DentalClinic &clinic) {

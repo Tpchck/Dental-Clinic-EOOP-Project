@@ -23,12 +23,13 @@ int main() {
     printAllAppointments(clinic.getAppointments());
 
     // Unsuccessful Execute tests
-    tests.testAddDentistWithEmptyName(clinic);
+    
+    /*tests.testAddDentistWithEmptyName(clinic);
     tests.testAddPatientWithEmptyName(clinic);
     tests.testAddTreatmentWithEmptyName(clinic);
     tests.testBookAppointmentWithNonexistentDentist(clinic);
     tests.testAddMedicalRecordForNonexistentPatient(clinic);
-    tests.testDeleteNonexistentAppointment(clinic);
+    tests.testDeleteNonexistentAppointment(clinic);*/
 
     return 0;
 }

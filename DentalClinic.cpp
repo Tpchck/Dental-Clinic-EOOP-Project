@@ -121,6 +121,7 @@ const Treatment* DentalClinic::findTreatment(const string &name) const {
     }
     return nullptr;
 }
+
 bool DentalClinic::isDentistAvailable(const Dentist* dentist, const string& date, const string& time) {
     for (Appointment* appointment : appointments) {
         if (appointment->getDentist() == dentist && appointment->getDate() == date && appointment->getTime() == time) {

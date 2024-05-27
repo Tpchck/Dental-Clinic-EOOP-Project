@@ -19,7 +19,6 @@ private:
     string description;
     double cost;
     string requiredSpecialization;
-
 public:
     Treatment(const string& name, const string& description, double cost, const string& requiredSpecialization);
 

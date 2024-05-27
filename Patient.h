@@ -11,7 +11,8 @@
 #define DENTAL_CLINIC_EOOP_PROJECT_PATIENT_H
 #endif //DENTAL_CLINIC_EOOP_PROJECT_PATIENT_H
 
-
+//классы должны быть независимы, дантиста можно добавить к разным клинкам. Пациента аналогично. Передача через поинтеры
+1pm 350a
 using namespace std;
 
 class Patient {
@@ -36,5 +37,6 @@ public:
     void setPhoneNumber(const string &newPhoneNumber);
 
     void addMedicalRecord(const MedicalRecord& record);
+
     void printMedicalRecord() const;
 };
