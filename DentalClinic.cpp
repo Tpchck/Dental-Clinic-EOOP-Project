@@ -102,3 +102,32 @@ void DentalClinic::printAllPatients() const {
     }
     cout << "-----------------------------------------------------------" << endl;
 }
+
+void DentalClinic::printAllAppointments() const {
+    cout << "-----------------------------------------------------------" << endl;
+    if (appointments.empty()) {
+        cout << "No appointments available." << endl;
+        cout << "-----------------------------------------------------------" << endl;
+        return;
+    }
+    cout << "Appointments:" << endl;
+    for (const Appointment *appointment: appointments) {
+        cout
+                << "Date: " << appointment->getDate() << ", "
+                << "Time: " << appointment->getTime() << ", "
+                << "Dentist: " << appointment->getDentist()->getName() << ", "
+                << "Patient: " << appointment->getPatient()->getName() << ", "
+                << "Treatment: " << appointment->getTreatment()->getName() << endl;
+    }
+    cout << "-----------------------------------------------------------" << endl;
+}
+
+void DentalClinic::removeAppointment(const string& date, const string& time, const Patient* patient) {
+    for (auto it = appointments.begin(); it != appointments.end(); ++it) {
+        if ((*it)->getDate() == date && (*it)->getTime() == time && (*it)->getPatient() == patient) {
+            delete *it;
+            appointments.erase(it);
+            break;
+        } cout << "No appointment to delete found for the given date, time and patient." << endl;
+    }
+}

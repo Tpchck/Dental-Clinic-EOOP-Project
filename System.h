@@ -11,4 +11,3 @@
 #endif //DENTAL_CLINIC_EOOP_PROJECT_SYSTEM_H
 
 void printAllTreatments(const vector<Treatment*>& treatments);
-void printAllAppointments(const vector<Appointment*>& appointments);

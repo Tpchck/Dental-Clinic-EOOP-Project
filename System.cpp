@@ -22,21 +22,3 @@ void printAllTreatments(const vector<Treatment*>& treatments) {
     cout << "-----------------------------------------------------------" << endl;
 }
 
-void printAllAppointments(const vector<Appointment*>& appointments) {
-    cout << "-----------------------------------------------------------" << endl;
-    if (appointments.empty()) {
-        cout << "No appointments available." << endl;
-        return;
-    }
-    cout << "Appointments:" << endl;
-    for (const Appointment *appointment: appointments) {
-        cout
-             << "Date: " << appointment->getDate() << ", "
-             << "Time: " << appointment->getTime() << ", "
-             << "Dentist: " << appointment->getDentist()->getName() << ", "
-             << "Patient: " << appointment->getPatient()->getName() << ", "
-             << "Treatment: " << appointment->getTreatment()->getName() << endl;
-    }
-    cout << "-----------------------------------------------------------" << endl;
-}
-
