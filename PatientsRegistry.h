@@ -19,4 +19,5 @@ public:
     void addPatient(const string& name, int age, const string& phoneNumber);
     Patient* findPatient(const string& name);
     vector<Patient*> getPatients() const;
+    void printAllPatients() const;
 };

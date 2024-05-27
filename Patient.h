@@ -1,11 +1,11 @@
 //
 // Created by Tpshck on 3/25/2024.
 //
-#pragma ocne
+#pragma once
 
 #ifndef PATIENT_H
 #define PATIENT_H
-
+#endif // PATIENT_H
 
 #include <string>
 #include <vector>
@@ -36,4 +36,3 @@ public:
     void addMedicalRecord(const MedicalRecord& medicalRecord);
 };
 
-#endif // PATIENT_H

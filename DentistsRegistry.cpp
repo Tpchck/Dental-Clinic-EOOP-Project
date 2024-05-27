@@ -5,6 +5,7 @@
 #pragma once
 
 #include "DentistsRegistry.h"
+#include <iostream>
 
 void DentistsRegistry::addDentist(const string& name, const string& specialization) {
     dentists.push_back(new Dentist(name, specialization));
@@ -16,9 +17,24 @@ Dentist* DentistsRegistry::findDentist(const string& name) {
             return dentist;
         }
     }
+    cout << "Error: Dentist with name " << name << " not found." << endl;
     return nullptr;
 }
 
 vector<Dentist*> DentistsRegistry::getDentists() const {
     return dentists;
+}
+
+void DentistsRegistry::printAllDentists() const {
+    cout << "-----------------------------------------------------------" << endl;
+    if (dentists.empty()) {
+        cout << "No dentists available." << endl;
+        return;
+    }
+    cout << "Available Dentists:" << endl;
+    for (const Dentist *dentist: dentists) {
+        cout << "Name: " << dentist->getName() << ", "
+             << "Specialization: " << dentist->getSpecialization() << endl;
+    }
+    cout << "-----------------------------------------------------------" << endl;
 }

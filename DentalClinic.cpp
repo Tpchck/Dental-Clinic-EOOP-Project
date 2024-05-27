@@ -17,6 +17,14 @@ void DentalClinic::addTreatment(const string& name, const string& description, d
 }
 
 Appointment* DentalClinic::bookAppointment(const string& date, const string& time, Dentist* dentist, Patient* patient, Treatment* treatment) {
+    if (dentist == nullptr) {
+        cout << "Error: Dentist not found." << endl;
+        return nullptr;
+    }
+    if (patient == nullptr) {
+        cout << "Error: Patient not found." << endl;
+        return nullptr;
+    }
     Appointment* appointment = new Appointment(date, time, dentist, patient, treatment);
     appointments.push_back(appointment);
     return appointment;
@@ -64,4 +72,33 @@ bool DentalClinic::canDentistPerformTreatment(const Dentist* dentist, const Trea
         return false;
     }
     return true;
+}
+
+void DentalClinic::printAllDentists() const {
+    cout << "-----------------------------------------------------------" << endl;
+    if (dentists.empty()) {
+        cout << "No dentists available." << endl;
+        return;
+    }
+    cout << "Available Dentists:" << endl;
+    for (const Dentist *dentist: dentists) {
+        cout << "Name: " << dentist->getName() << ", "
+             << "Specialization: " << dentist->getSpecialization() << endl;
+    }
+    cout << "-----------------------------------------------------------" << endl;
+}
+
+void DentalClinic::printAllPatients() const {
+    cout << "-----------------------------------------------------------" << endl;
+    if (patients.empty()) {
+        cout << "No patients available." << endl;
+        return;
+    }
+    cout << "Registered Patients:" << endl;
+    for (const Patient *patient: patients) {
+        cout << "Name: " << patient->getName() << ", "
+             << "Age: " << patient->getAge() << ", "
+             << "Phone Number: " << patient->getPhoneNumber() << endl;
+    }
+    cout << "-----------------------------------------------------------" << endl;
 }

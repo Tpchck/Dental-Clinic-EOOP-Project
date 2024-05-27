@@ -12,5 +12,3 @@
 
 void printAllTreatments(const vector<Treatment*>& treatments);
 void printAllAppointments(const vector<Appointment*>& appointments);
-void printAllDentists(const vector<Dentist*>& dentists);
-void printAllPatients(const vector<Patient*>& patients);

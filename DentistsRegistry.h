@@ -19,4 +19,5 @@ public:
     void addDentist(const string& name, const string& specialization);
     Dentist* findDentist(const string& name);
     vector<Dentist*> getDentists() const;
+    void printAllDentists() const;
 };

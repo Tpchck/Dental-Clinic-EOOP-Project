@@ -30,4 +30,7 @@ public:
 
     bool isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const;
     bool canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const;
+
+    void printAllDentists() const;
+    void printAllPatients() const;
 };
