@@ -6,7 +6,8 @@
 
 int Dentist::lastId = 0;
 
-Dentist::Dentist(const string& name, const string& specialization) : name(name), specialization(specialization) {
+Dentist::Dentist(const string& name, const string& specialization, DentalClinic* clinic)
+        : name(name), specialization(specialization), clinic(clinic) {
     id = ++lastId;
 }
 
@@ -28,4 +29,12 @@ void Dentist::setSpecialization(const string& specialization) {
 
 int Dentist::getId() const {
     return id;
+}
+
+void Dentist::addPatient(Patient* patient) {
+    patients.push_back(patient);
+}
+
+void Dentist::addTreatment(Treatment* treatment) {
+    treatments.push_back(treatment);
 }

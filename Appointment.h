@@ -4,7 +4,6 @@
 #pragma once
 
 #include <string>
-#include "Dentist.h"
 #include "Patient.h"
 #include "Treatment.h"
 #include <iostream>

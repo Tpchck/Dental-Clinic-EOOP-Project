@@ -4,7 +4,8 @@
 
 #include "Patient.h"
 
-Patient::Patient(const string& name, int age, const string& phoneNumber) : name(name), age(age), phoneNumber(phoneNumber) {
+Patient::Patient(const string& name, int age, const string& phoneNumber, DentalClinic* clinic)
+        : name(name), age(age), phoneNumber(phoneNumber), clinic(clinic) {
     id = ++lastId;
 }
 
@@ -44,4 +45,12 @@ vector<MedicalRecord> Patient::getMedicalRecords() const {
 
 void Patient::addMedicalRecord(const MedicalRecord& medicalRecord) {
     medicalRecords.push_back(medicalRecord);
+}
+
+void Patient::addDentist(Dentist* dentist) {
+    dentists.push_back(dentist);
+}
+
+void Patient::addTreatment(Treatment* treatment) {
+    treatments.push_back(treatment);
 }

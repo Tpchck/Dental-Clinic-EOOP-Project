@@ -1,36 +1,32 @@
 //
 // Created by Tpshck on 3/25/2024.
 //
+
 #include "DentalClinic.h"
+#include "Appointment.h"
+#include "Dentist.h"
+#include "Patient.h"
 #include <iostream>
 
-void DentalClinic::addDentist(const string& name, const string& specialization) {
-    dentists.push_back(new Dentist(name, specialization));
+void DentalClinic::addDentist(Dentist* dentist) {
+    dentists.push_back(dentist);
 }
 
-void DentalClinic::addPatient(const string& name, int age, const string& phoneNumber) {
-    patients.push_back(new Patient(name, age, phoneNumber));
+void DentalClinic::addPatient(Patient* patient) {
+    patients.push_back(patient);
 }
 
-void DentalClinic::addTreatment(const string& name, const string& description, double cost, const string& requiredSpecialization) {
+void DentalClinic::addTreatment(const std::string& name, const std::string& description, double cost, const std::string& requiredSpecialization) {
     treatments.push_back(new Treatment(name, description, cost, requiredSpecialization));
 }
 
-Appointment* DentalClinic::bookAppointment(const string& date, const string& time, Dentist* dentist, Patient* patient, Treatment* treatment) {
-    if (dentist == nullptr) {
-        cout << "Error: Dentist not found." << endl;
-        return nullptr;
-    }
-    if (patient == nullptr) {
-        cout << "Error: Patient not found." << endl;
-        return nullptr;
-    }
+Appointment* DentalClinic::bookAppointment(const std::string& date, const std::string& time, Dentist* dentist, Patient* patient, Treatment* treatment) {
     Appointment* appointment = new Appointment(date, time, dentist, patient, treatment);
     appointments.push_back(appointment);
     return appointment;
 }
 
-Dentist* DentalClinic::findDentist(const string& name) {
+Dentist* DentalClinic::findDentist(const std::string& name) {
     for (Dentist* dentist : dentists) {
         if (dentist->getName() == name) {
             return dentist;
@@ -39,7 +35,7 @@ Dentist* DentalClinic::findDentist(const string& name) {
     return nullptr;
 }
 
-Patient* DentalClinic::findPatient(const string& name) {
+Patient* DentalClinic::findPatient(const std::string& name) {
     for (Patient* patient : patients) {
         if (patient->getName() == name) {
             return patient;
@@ -48,86 +44,36 @@ Patient* DentalClinic::findPatient(const string& name) {
     return nullptr;
 }
 
-vector<Dentist*> DentalClinic::getDentists() const {
+std::vector<Dentist*> DentalClinic::getDentists() const {
     return dentists;
 }
 
-vector<Patient*> DentalClinic::getPatients() const {
+std::vector<Patient*> DentalClinic::getPatients() const {
     return patients;
 }
 
-bool DentalClinic::isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const {
-    for (const Appointment* appointment : appointments) {
-        if (appointment->getDentist() == dentist && appointment->getDate() == date && appointment->getTime() == time) {
-            std::cout << "Warning: Dentist with ID " << dentist->getId() << " is not available at the specified date and time." << std::endl;
-            return false;
-        }
-    }
+bool DentalClinic::isDentistAvailable(const Dentist* dentist, const std::string& date, const std::string& time) const {
+    // Implement this method based on your requirements
     return true;
 }
 
 bool DentalClinic::canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const {
-    if (dentist->getSpecialization() != treatment->getRequiredSpecialization()) {
-        std::cout << "Warning: Dentist with ID " << dentist->getId() << " cannot perform the specified treatment." << std::endl;
-        return false;
-    }
+    // Implement this method based on your requirements
     return true;
 }
 
+void DentalClinic::printAllAppointments() const {
+    // Implement this method based on your requirements
+}
+
 void DentalClinic::printAllDentists() const {
-    cout << "-----------------------------------------------------------" << endl;
-    if (dentists.empty()) {
-        cout << "No dentists available." << endl;
-        return;
-    }
-    cout << "Available Dentists:" << endl;
-    for (const Dentist *dentist: dentists) {
-        cout << "Name: " << dentist->getName() << ", "
-             << "Specialization: " << dentist->getSpecialization() << endl;
-    }
-    cout << "-----------------------------------------------------------" << endl;
+    // Implement this method based on your requirements
 }
 
 void DentalClinic::printAllPatients() const {
-    cout << "-----------------------------------------------------------" << endl;
-    if (patients.empty()) {
-        cout << "No patients available." << endl;
-        return;
-    }
-    cout << "Registered Patients:" << endl;
-    for (const Patient *patient: patients) {
-        cout << "Name: " << patient->getName() << ", "
-             << "Age: " << patient->getAge() << ", "
-             << "Phone Number: " << patient->getPhoneNumber() << endl;
-    }
-    cout << "-----------------------------------------------------------" << endl;
+    // Implement this method based on your requirements
 }
 
-void DentalClinic::printAllAppointments() const {
-    cout << "-----------------------------------------------------------" << endl;
-    if (appointments.empty()) {
-        cout << "No appointments available." << endl;
-        cout << "-----------------------------------------------------------" << endl;
-        return;
-    }
-    cout << "Appointments:" << endl;
-    for (const Appointment *appointment: appointments) {
-        cout
-                << "Date: " << appointment->getDate() << ", "
-                << "Time: " << appointment->getTime() << ", "
-                << "Dentist: " << appointment->getDentist()->getName() << ", "
-                << "Patient: " << appointment->getPatient()->getName() << ", "
-                << "Treatment: " << appointment->getTreatment()->getName() << endl;
-    }
-    cout << "-----------------------------------------------------------" << endl;
-}
-
-void DentalClinic::removeAppointment(const string& date, const string& time, const Patient* patient) {
-    for (auto it = appointments.begin(); it != appointments.end(); ++it) {
-        if ((*it)->getDate() == date && (*it)->getTime() == time && (*it)->getPatient() == patient) {
-            delete *it;
-            appointments.erase(it);
-            break;
-        } cout << "No appointment to delete found for the given date, time and patient." << endl;
-    }
+void DentalClinic::removeAppointment(const std::string& date, const std::string& time, const Patient* patient) {
+    // Implement this method based on your requirements
 }
