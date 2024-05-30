@@ -91,13 +91,6 @@ build CMakeFiles/Dental_Clinic_EOOP_project.dir/Treatment.cpp.obj: CXX_COMPILER_
   OBJECT_DIR = CMakeFiles\Dental_Clinic_EOOP_project.dir
   OBJECT_FILE_DIR = CMakeFiles\Dental_Clinic_EOOP_project.dir
 
-build CMakeFiles/Dental_Clinic_EOOP_project.dir/System.cpp.obj: CXX_COMPILER__Dental_Clinic_EOOP_project_unscanned_Debug G$:/Politechnicka$ Warszawska$ Study/EOOP/Dental-Clinic-EOOP-project/System.cpp || cmake_object_order_depends_target_Dental_Clinic_EOOP_project
-  DEP_FILE = CMakeFiles\Dental_Clinic_EOOP_project.dir\System.cpp.obj.d
-  FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
-  INCLUDES = -I"G:/Politechnicka Warszawska Study/EOOP/Dental-Clinic-EOOP-project/."
-  OBJECT_DIR = CMakeFiles\Dental_Clinic_EOOP_project.dir
-  OBJECT_FILE_DIR = CMakeFiles\Dental_Clinic_EOOP_project.dir
-
 build CMakeFiles/Dental_Clinic_EOOP_project.dir/MedicalRecord.cpp.obj: CXX_COMPILER__Dental_Clinic_EOOP_project_unscanned_Debug G$:/Politechnicka$ Warszawska$ Study/EOOP/Dental-Clinic-EOOP-project/MedicalRecord.cpp || cmake_object_order_depends_target_Dental_Clinic_EOOP_project
   DEP_FILE = CMakeFiles\Dental_Clinic_EOOP_project.dir\MedicalRecord.cpp.obj.d
   FLAGS = -g -std=gnu++14 -fdiagnostics-color=always
@@ -113,7 +106,7 @@ build CMakeFiles/Dental_Clinic_EOOP_project.dir/MedicalRecord.cpp.obj: CXX_COMPI
 #############################################
 # Link the executable Dental_Clinic_EOOP_project.exe
 
-build Dental_Clinic_EOOP_project.exe: CXX_EXECUTABLE_LINKER__Dental_Clinic_EOOP_project_Debug CMakeFiles/Dental_Clinic_EOOP_project.dir/main.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Patient.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Appointment.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Dentist.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/DentalClinic.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Treatment.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/System.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/MedicalRecord.cpp.obj
+build Dental_Clinic_EOOP_project.exe: CXX_EXECUTABLE_LINKER__Dental_Clinic_EOOP_project_Debug CMakeFiles/Dental_Clinic_EOOP_project.dir/main.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Patient.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Appointment.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Dentist.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/DentalClinic.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/Treatment.cpp.obj CMakeFiles/Dental_Clinic_EOOP_project.dir/MedicalRecord.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\Dental_Clinic_EOOP_project.dir

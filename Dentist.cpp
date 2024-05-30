@@ -3,12 +3,17 @@
 //
 
 #include "Dentist.h"
+#include <iostream>
 
 int Dentist::lastId = 0;
 
-Dentist::Dentist(const string& name, const string& specialization, DentalClinic* clinic)
-        : name(name), specialization(specialization), clinic(clinic) {
+Dentist::Dentist(const string& name, const string& specialization)
+        : name(name), specialization(specialization) {
     id = ++lastId;
+}
+
+void Dentist::addClinics(DentalClinic* clinic) {
+    clinics.push_back(clinic);
 }
 
 string Dentist::getName() const {
@@ -37,4 +42,31 @@ void Dentist::addPatient(Patient* patient) {
 
 void Dentist::addTreatment(Treatment* treatment) {
     treatments.push_back(treatment);
+}
+
+vector<Treatment*> Dentist::getTreatments() const {
+    return treatments;
+}
+
+void Dentist::printTreatments() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Dentist " << name << " can perform following treatments: " << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    for (const auto& treatment : treatments) {
+        if (treatment->getRequiredSpecialization() == specialization) {
+            cout << "- " << treatment->getName() << endl;
+        }
+    }
+}
+
+vector<DentalClinic*> Dentist::getClinics() const {
+    return clinics;
+}
+
+void Dentist::printClinics() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Dentist " << name << " works in clinics: " << endl;
+    for (const auto& clinic : clinics) {
+        cout << "- " << clinic->getName() << endl;
+    }
 }

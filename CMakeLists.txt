@@ -17,8 +17,6 @@ add_executable(Dental_Clinic_EOOP_project
         DentalClinic.cpp
         Treatment.cpp
         Treatment.h
-        System.cpp
-        System.h
         MedicalRecord.cpp
         MedicalRecord.h
 )

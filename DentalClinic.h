@@ -17,26 +17,32 @@ class Appointment;
 
 class DentalClinic {
 private:
-    std::vector<Dentist*> dentists;
-    std::vector<Patient*> patients;
-    std::vector<Treatment*> treatments;
-    std::vector<Appointment*> appointments;
+    string name;
+    vector<Dentist*> dentists;
+    vector<Patient*> patients;
+    vector<Treatment*> treatments;
+    vector<Appointment*> appointments;
 public:
+    DentalClinic(const string& name);
     void addDentist(Dentist* dentist);
     void addPatient(Patient* patient);
-    void addTreatment(const std::string& name, const std::string& description, double cost, const std::string& requiredSpecialization);
-    Appointment* bookAppointment(const std::string& date, const std::string& time, Dentist* dentist, Patient* patient, Treatment* treatment);
-    Dentist* findDentist(const std::string& name);
-    Patient* findPatient(const std::string& name);
-    std::vector<Dentist*> getDentists() const;
-    std::vector<Patient*> getPatients() const;
+    Appointment* bookAppointment(const string& date, const string& time, Dentist* dentist, Patient* patient, Treatment* treatment);
+    Dentist* findDentist(const string& name);
+    Patient* findPatient(const string& name);
+    vector<Dentist*> getDentists() const;
+    vector<Patient*> getPatients() const;
 
-    bool isDentistAvailable(const Dentist* dentist, const std::string& date, const std::string& time) const;
+    bool isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const;
     bool canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const;
+
+    string getName() const;
 
     void printAllAppointments() const;
     void printAllDentists() const;
     void printAllPatients() const;
 
-    void removeAppointment(const std::string& date, const std::string& time, const Patient* patient);
+    vector<Appointment*> getAppointments() const;
+    vector<Treatment*> getTreatments() const;
+    
+    void removeAppointment(const string& date, const string& time, const Patient* patient);
 };

@@ -23,14 +23,15 @@ private:
     string name;
     int age;
     string phoneNumber;
-    vector<MedicalRecord> medicalRecords;
     static int lastId;
+    vector<MedicalRecord> medicalRecords;
     vector<Dentist*> dentists;
     vector<Treatment*> treatments;
-    DentalClinic* clinic;
+    vector<DentalClinic*> clinics;
 
 public:
-    Patient(const string& name, int age, const string& phoneNumber, DentalClinic* clinic);
+    Patient(const string& name, int age, const string& phoneNumber);
+    void addClinics(DentalClinic* clinic);
     int getId() const;
     string getName() const;
     void setName(const string& name);
@@ -42,7 +43,9 @@ public:
     void addMedicalRecord(const MedicalRecord& medicalRecord);
     void addDentist(Dentist* dentist);
     void addTreatment(Treatment* treatment);
-    void setClinic(DentalClinic* clinic);
-    DentalClinic* getClinic() const;
+    vector<DentalClinic*> getClinics() const;
+    vector<Treatment*> getTreatments() const;
+    void printTreatments() const;
+    void printClinics() const;
 };
 
