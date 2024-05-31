@@ -4,6 +4,7 @@
 
 #include "Dentist.h"
 #include <iostream>
+#include "Appointment.h"
 
 int Dentist::lastId = 0;
 
@@ -20,16 +21,8 @@ string Dentist::getName() const {
     return name;
 }
 
-void Dentist::setName(const string& name) {
-    this->name = name;
-}
-
 string Dentist::getSpecialization() const {
     return specialization;
-}
-
-void Dentist::setSpecialization(const string& specialization) {
-    this->specialization = specialization;
 }
 
 int Dentist::getId() const {
@@ -68,5 +61,28 @@ void Dentist::printClinics() const {
     cout << "Dentist " << name << " works in clinics: " << endl;
     for (const auto& clinic : clinics) {
         cout << "- " << clinic->getName() << endl;
+    }
+}
+bool Dentist::isAvailable(const string& date, const string& time) const {
+    for (const auto& clinic : clinics) {
+        for (const auto& appointment : clinic->getAppointments()) {
+            if (appointment->getDentist() == this && appointment->getDate() == date && appointment->getTime() == time) {
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool Dentist::canPerformTreatment(const Treatment* treatment) const {
+    return treatment->getRequiredSpecialization() == specialization;
+}
+
+void Dentist::printPatients() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Dentist " << name << " has the following patients: " << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    for (const auto& patient : patients) {
+        cout << "- " << patient->getName() << endl;
     }
 }

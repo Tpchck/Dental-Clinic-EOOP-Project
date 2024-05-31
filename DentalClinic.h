@@ -32,9 +32,6 @@ public:
     vector<Dentist*> getDentists() const;
     vector<Patient*> getPatients() const;
 
-    bool isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const;
-    bool canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const;
-
     string getName() const;
 
     void printAllAppointments() const;

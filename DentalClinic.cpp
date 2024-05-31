@@ -21,7 +21,7 @@ void DentalClinic::addPatient(Patient* patient) {
 }
 
 Appointment* DentalClinic::bookAppointment(const string& date, const string& time, Dentist* dentist, Patient* patient, Treatment* treatment) {
-    if (!isDentistAvailable(dentist, date, time)) {
+    if (!dentist->isAvailable(date, time)) {
         cout<<"-------------------------------------------------------------------------------"<<endl;
         cout << "Error: The time slot is already occupied." << endl;
         cout<<"-------------------------------------------------------------------------------"<<endl;
@@ -29,6 +29,8 @@ Appointment* DentalClinic::bookAppointment(const string& date, const string& tim
     } else {
         Appointment* appointment = new Appointment(date, time, dentist, patient, treatment);
         appointments.push_back(appointment);
+        dentist->addPatient(patient);
+        patient->addDentist(dentist);
         return appointment;
     }
 }
@@ -63,28 +65,6 @@ vector<Dentist*> DentalClinic::getDentists() const {
 
 vector<Patient*> DentalClinic::getPatients() const {
     return patients;
-}
-
-bool DentalClinic::isDentistAvailable(const Dentist* dentist, const string& date, const string& time) const {
-    for (const auto& appointment : appointments) {
-        if (appointment->getDentist() == dentist && appointment->getDate() == date && appointment->getTime() == time) {
-            cout<<"-------------------------------------------------------------------------------"<<endl;
-            cout << "Error: Dentist " << dentist->getName() << " is not available at " << date << " " << time << "." << endl;
-            cout<<"-------------------------------------------------------------------------------"<<endl;
-            return false;
-        }
-    }
-    return true;
-}
-
-bool DentalClinic::canDentistPerformTreatment(const Dentist* dentist, const Treatment* treatment) const {
-    if (dentist->getSpecialization() != treatment->getRequiredSpecialization()) {
-        cout<<"-------------------------------------------------------------------------------"<<endl;
-        cout << "Error: Dentist " << dentist->getName() << " cannot perform the required treatment " << treatment->getName() << "." << endl;
-        cout<<"-------------------------------------------------------------------------------"<<endl;
-        return false;
-    }
-    return true;
 }
 
 void DentalClinic::printAllAppointments() const {

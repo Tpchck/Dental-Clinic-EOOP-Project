@@ -4,7 +4,7 @@
 
 #include "Patient.h"
 #include <iostream>
-#include <algorithm>
+#include "Dentist.h"
 
 Patient::Patient(const string& name, int age, const string& phoneNumber)
         : name(name), age(age), phoneNumber(phoneNumber) {
@@ -84,5 +84,14 @@ void Patient::printClinics() const {
     cout<<"-------------------------------------------------------------------------------"<<endl;
     for (const auto& clinic : clinics) {
         cout << "- " << clinic->getName() << endl;
+    }
+}
+
+void Patient::printDentists() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Patient " << name << " has the following dentists: " << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    for (const auto& dentist : dentists) {
+        cout << "- " << dentist->getName() << endl;
     }
 }

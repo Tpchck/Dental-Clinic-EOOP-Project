@@ -29,9 +29,7 @@ public:
     Dentist(const string& name, const string& specialization);
     void addClinics(DentalClinic* clinic);
     string getName() const;
-    void setName(const string& name);
     string getSpecialization() const;
-    void setSpecialization(const string& specialization);
     int getId() const;
     void addPatient(Patient* patient);
     void addTreatment(Treatment* treatment);
@@ -39,5 +37,8 @@ public:
     vector<Treatment*> getTreatments() const;
     void printTreatments() const;
     void printClinics() const;
+    bool isAvailable(const string& date, const string& time) const;
+    bool canPerformTreatment(const Treatment* treatment) const;
+    void printPatients() const;
 };
 

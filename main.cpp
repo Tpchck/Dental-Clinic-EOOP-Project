@@ -66,7 +66,12 @@ int main() {
     dentist2.printTreatments();
     // 14. Print the clinic of a dentist
     dentist1.printClinics();
-
+    // 15. Print the patients of a dentist
+    dentist1.printPatients();
+    dentist2.printPatients();
+    // 16. Print the dentists of a patient
+    patient1.printDentists();
+    patient2.printDentists();
 
     // Unsuccessful scenarios
     // 1. Attempt to add a patient who is already in the clinic
@@ -74,7 +79,7 @@ int main() {
     // 2. Attempt to add a dentist who is already in the clinic
     clinic1.addDentist(&dentist1);
     // 3. Attempt to book an appointment at an already occupied time
-    if (clinic1.isDentistAvailable(&dentist1, "2024-04-01", "10:00") && clinic1.canDentistPerformTreatment(&dentist1, &treatment1)) {
+    if (dentist1.isAvailable("2024-04-01", "10:00") && dentist1.canPerformTreatment(&treatment1)) {
         Appointment* appointment2 = clinic1.bookAppointment("2024-04-01", "10:00", &dentist1, &patient1, &treatment1);
     }
     // 4. Attempt to find a dentist who is not in the clinic

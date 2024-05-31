@@ -47,5 +47,6 @@ public:
     vector<Treatment*> getTreatments() const;
     void printTreatments() const;
     void printClinics() const;
+    void printDentists() const;
 };
 
