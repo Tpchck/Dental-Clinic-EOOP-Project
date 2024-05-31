@@ -4,7 +4,6 @@
 #pragma once
 
 #include <string>
-#include "Dentist.h"
 #include "Patient.h"
 #include "Treatment.h"
 #include <iostream>
@@ -25,23 +24,19 @@ private:
     const Dentist* dentist;
     const Patient* patient;
     const Treatment* treatment;
-    DentalClinic& clinic;
-
     int id;
     static int lastId;
-
 public:
-    Appointment(const string &date, const string &time, const Dentist* dentist, const Patient* patient, const Treatment* treatment, DentalClinic& clinic);
+    Appointment(const string& date, const string& time, const Dentist* dentist, const Patient* patient, const Treatment* treatment);
     string getDate() const;
+    void setDate(const string& date);
     string getTime() const;
-    int getId() const;
+    void setTime(const string& time);
     const Dentist* getDentist() const;
+    void setDentist(const Dentist* dentist);
     const Patient* getPatient() const;
+    void setPatient(const Patient* patient);
     const Treatment* getTreatment() const;
-
-    void editDate(const string &newDate);
-    void editTime(const string &newTime);
-    void editDentist(const Dentist* newDentist);
-    void editPatient(const Patient* newPatient);
-    void setTreatment(const Treatment* newTreatment);
+    void setTreatment(const Treatment* treatment);
+    int getId() const;
 };

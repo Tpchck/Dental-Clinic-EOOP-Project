@@ -2,59 +2,96 @@
 // Created by Tpshck on 3/25/2024.
 //
 
-#include <iostream>
 #include "Patient.h"
+#include <iostream>
+#include "Dentist.h"
+
+Patient::Patient(const string& name, int age, const string& phoneNumber)
+        : name(name), age(age), phoneNumber(phoneNumber) {
+    id = ++lastId;
+}
 
 int Patient::lastId = 0;
 
-Patient::Patient(const string& name, int age, const string& phoneNumber)
-        : id(++lastId), name(name), age(age), phoneNumber(phoneNumber) {}
-
 int Patient::getId() const {
     return id;
+}
+
+void Patient::addClinics(DentalClinic* clinic) {
+    clinics.push_back(clinic);
 }
 
 string Patient::getName() const {
     return name;
 }
 
+void Patient::setName(const string& name) {
+    this->name = name;
+}
+
 int Patient::getAge() const {
     return age;
+}
+
+void Patient::setAge(int age) {
+    this->age = age;
 }
 
 string Patient::getPhoneNumber() const {
     return phoneNumber;
 }
 
-void Patient::setName(const string &newName) {
-    name = newName;
+void Patient::setPhoneNumber(const string& phoneNumber) {
+    this->phoneNumber = phoneNumber;
 }
 
-void Patient::setAge(int newAge) {
-    age = newAge;
+vector<MedicalRecord> Patient::getMedicalRecords() const {
+    return medicalRecords;
 }
 
-void Patient::setPhoneNumber(const string &newPhoneNumber) {
-    phoneNumber = newPhoneNumber;
+void Patient::addMedicalRecord(const MedicalRecord& medicalRecord) {
+    medicalRecords.push_back(medicalRecord);
 }
 
-void Patient::addMedicalRecord(const MedicalRecord& record) {
-    medicalRecords.push_back(record);
+void Patient::addDentist(Dentist* dentist) {
+    dentists.push_back(dentist);
 }
 
-void Patient::printMedicalRecord() const {
-    if (medicalRecords.empty()) {
-        cout << "No medical records for " << name << "." << endl;
-        return;
+void Patient::addTreatment(Treatment* treatment) {
+    treatments.push_back(treatment);
+}
+
+vector<Treatment*> Patient::getTreatments() const {
+    return treatments;
+}
+
+void Patient::printTreatments() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Patient " << name << " has the following treatments: " << endl;
+    for (const auto& treatment : treatments) {
+        cout << "- " << treatment->getName() << endl;
     }
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+}
 
-    cout << "-----------------------------------------------------------" << endl;
-    cout << "Medical Record for " << name << ":" << endl;
-    for (const MedicalRecord& record : medicalRecords) {
-        cout << "Condition: " << record.getCondition() << ", "
-             << "Treatment: " << record.getTreatment() << ", "
-             << "Date: " << record.getDate() << ", "
-             << "Doctor: " << record.getDoctorName() << endl;
+vector<DentalClinic*> Patient::getClinics() const {
+    return clinics;
+}
+
+void Patient::printClinics() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Patient " << name << " is in clinics: " << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    for (const auto& clinic : clinics) {
+        cout << "- " << clinic->getName() << endl;
     }
-    cout << "-----------------------------------------------------------" << endl;
+}
+
+void Patient::printDentists() const {
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Patient " << name << " has the following dentists: " << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    for (const auto& dentist : dentists) {
+        cout << "- " << dentist->getName() << endl;
+    }
 }
