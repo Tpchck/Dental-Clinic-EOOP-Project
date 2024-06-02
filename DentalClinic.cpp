@@ -120,3 +120,15 @@ vector<Treatment*> DentalClinic::getTreatments() const {
 string DentalClinic::getName() const {
     return name;
 }
+
+Treatment* DentalClinic::findTreatment(const string& name) {
+    for (Treatment* treatment : treatments) {
+        if (treatment->getName() == name) {
+            return treatment;
+        }
+    }
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    cout << "Error: Treatment " << name << " is not found." << endl;
+    cout<<"-------------------------------------------------------------------------------"<<endl;
+    return nullptr;
+}

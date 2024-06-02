@@ -33,10 +33,18 @@ int main() {
     clinic2.addDentist(&dentist1);
     clinic2.addDentist(&dentist2);
     // 6.1 Booking appointments
-    Appointment* appointment1 = clinic1.bookAppointment("2024-04-01", "10:00", &dentist1, &patient1, &treatment1);
-    Appointment* appointment2 = clinic1.bookAppointment("2024-04-02", "11:00", &dentist2, &patient1, &treatment2);
-    Appointment* appointment3 = clinic2.bookAppointment("2024-04-01", "12:00", &dentist1, &patient2, &treatment1);
-    Appointment* appointment4 = clinic2.bookAppointment("2024-04-02", "13:00", &dentist2, &patient2, &treatment2);
+    if(dentist1.isAvailable("2024-04-01", "10:00") && dentist1.canPerformTreatment(&treatment1)){
+        Appointment* appointment1 = clinic1.bookAppointment("2024-04-01", "10:00", &dentist1, &patient1, &treatment1);
+    }
+    if(dentist2.isAvailable("2024-04-02", "11:00") && dentist2.canPerformTreatment(&treatment2)){
+        Appointment* appointment2 = clinic1.bookAppointment("2024-04-02", "11:00", &dentist2, &patient1, &treatment2);
+    }
+    if(dentist1.isAvailable("2024-04-01", "12:00") && dentist1.canPerformTreatment(&treatment1)){
+        Appointment* appointment3 = clinic2.bookAppointment("2024-04-01", "12:00", &dentist1, &patient2, &treatment1);
+    }
+    if(dentist2.isAvailable("2024-04-02", "13:00") && dentist2.canPerformTreatment(&treatment2)){
+        Appointment* appointment4 = clinic2.bookAppointment("2024-04-02", "13:00", &dentist2, &patient2, &treatment2);
+    }
     // 6.2 Printing all appointments in the clinics
     cout<<"Appointments in Brave Teeth Med Clinic:"<<endl;
     clinic1.printAllAppointments();
@@ -86,5 +94,17 @@ int main() {
     Dentist* dentist3 = clinic1.findDentist("Dr. Nonexistent");
     // 5. Attempt to find a patient who is not in the clinic
     Patient* patient3 = clinic1.findPatient("Markis Nonexistent");
+    // 6. Attempt to book an appointment with a dentist who cannot perform the required treatment
+    if (dentist1.isAvailable("2024-04-01", "14:00") && dentist1.canPerformTreatment(&treatment2)) {
+        Appointment* appointment5 = clinic1.bookAppointment("2024-04-01", "14:00", &dentist1, &patient1, &treatment2);
+    }
+// 7. Attempt to add a treatment to a patient that cannot be performed by any of his dentists
+    patient1.addTreatment(&treatment2);
+// 8. Attempt to remove an appointment that does not exist
+    clinic1.removeAppointment("2024-04-01", "15:00", &patient1);
+// 9. Attempt to find a treatment that does not exist
+    Treatment* treatment3 = clinic1.findTreatment("Nonexistent Treatment");
+// 10. Attempt to add a clinic to a patient who is already registered in that clinic
+    patient1.addClinics(&clinic1);
     return 0;
 }

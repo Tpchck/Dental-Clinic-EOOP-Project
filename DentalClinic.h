@@ -38,8 +38,10 @@ public:
     void printAllDentists() const;
     void printAllPatients() const;
 
+    Treatment* findTreatment(const string& name);
+
     vector<Appointment*> getAppointments() const;
     vector<Treatment*> getTreatments() const;
-    
+
     void removeAppointment(const string& date, const string& time, const Patient* patient);
 };
