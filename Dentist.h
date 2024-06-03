@@ -5,16 +5,14 @@
 
 #ifndef DENTIST_H
 #define DENTIST_H
-#endif // DENTIST_H
-
-using namespace std;
 
 #include <vector>
+#include <string>
 #include "Treatment.h"
 #include "DentalClinic.h"
+#include "Appointment.h"
 
 class Patient;
-class DentalClinic;
 
 class Dentist {
 private:
@@ -25,20 +23,30 @@ private:
     vector<Patient*> patients;
     vector<Treatment*> treatments;
     vector<DentalClinic*> clinics;
+    vector<Appointment*> appointments;
 public:
     Dentist(const string& name, const string& specialization);
+    ~Dentist();
     void addClinics(DentalClinic* clinic);
+    void removeClinic(DentalClinic* clinic);
     string getName() const;
     string getSpecialization() const;
     int getId() const;
     void addPatient(Patient* patient);
+    void removePatient(Patient* patient);
     void addTreatment(Treatment* treatment);
-    vector<DentalClinic*> getClinics() const;
-    vector<Treatment*> getTreatments() const;
+    void addAppointment(Appointment* appointment);
+    void removeAppointment(const Appointment* appointment);
     void printTreatments() const;
     void printClinics() const;
+    void printPatients() const;
+    void printAppointments() const;
     bool isAvailable(const string& date, const string& time) const;
     bool canPerformTreatment(const Treatment* treatment) const;
-    void printPatients() const;
 };
+
+#endif // DENTIST_H
+
+
+
 

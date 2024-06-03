@@ -21,12 +21,7 @@ private:
     string requiredSpecialization;
 public:
     Treatment(const string& name, const string& description, double cost, const string& requiredSpecialization);
+    ~Treatment();
     string getName() const;
-    void setName(const string& name);
-    string getDescription() const;
-    void setDescription(const string& description);
-    double getCost() const;
-    void setCost(double cost);
     string getRequiredSpecialization() const;
-    void setRequiredSpecialization(const string& requiredSpecialization);
 };

@@ -21,22 +21,18 @@ class Appointment {
 private:
     string date;
     string time;
-    const Dentist* dentist;
-    const Patient* patient;
+    Dentist* dentist;
+    Patient* patient;
     const Treatment* treatment;
     int id;
     static int lastId;
 public:
-    Appointment(const string& date, const string& time, const Dentist* dentist, const Patient* patient, const Treatment* treatment);
+    Appointment(const string& date, const string& time, Dentist* dentist, Patient* patient, const Treatment* treatment);
+    ~Appointment();
     string getDate() const;
-    void setDate(const string& date);
     string getTime() const;
-    void setTime(const string& time);
-    const Dentist* getDentist() const;
-    void setDentist(const Dentist* dentist);
-    const Patient* getPatient() const;
-    void setPatient(const Patient* patient);
+    Dentist* getDentist() const;
+    Patient* getPatient() const;
     const Treatment* getTreatment() const;
-    void setTreatment(const Treatment* treatment);
     int getId() const;
 };
